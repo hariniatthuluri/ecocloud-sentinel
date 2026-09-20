@@ -1,37 +1,45 @@
-# EcoCloud Sentinel
+# EcoCloud Sentinel 🌱☁️
 
-EcoCloud Sentinel is an AI-powered cloud sustainability assistant that will identify wasteful or underutilized cloud resources, estimate cost and environmental impact, explain the findings, and recommend practical actions.
+> **Detect cloud waste. Quantify its impact. Act on the savings.**
 
-This initial setup contains a React/Vite frontend, a minimal FastAPI backend, and local mock AWS resource data. AWS integration will be added later.
+EcoCloud Sentinel is a cloud sustainability analyzer that identifies inefficient infrastructure, estimates its cost and environmental impact, and provides actionable optimization recommendations.
 
-## Project structure
+## ✨ Features
+
+* 📊 Infrastructure sustainability dashboard
+* 🔍 Waste detection across EC2, RDS, EBS and S3
+* 💰 Estimated monthly cost and potential savings
+* 🌱 Prototype carbon-impact estimation
+* 💡 Resource-specific optimization recommendations
+* 🔎 Resource and finding details
+* ⚡ FastAPI backend + React frontend
+
+## 🏗️ Architecture
 
 ```text
-EcoCloud-Sentinel/
-├── frontend/                 # React application built with Vite
-├── backend/
-│   ├── main.py               # FastAPI application
-│   └── requirements.txt      # Backend dependencies
-├── data/
-│   └── sample_resources.json # Local mock EC2 data
-├── README.md
-└── .gitignore
+Representative Infrastructure Data
+                ↓
+         FastAPI Backend
+                ↓
+        Analysis Engine
+                ↓
+   Detect → Explain → Quantify → Recommend
+                ↓
+          React Dashboard
 ```
 
-## Start the frontend
+## 🛠️ Tech Stack
 
-```powershell
-cd frontend
-npm run dev
-```
+* **Frontend:** React, Vite, JavaScript
+* **Backend:** Python, FastAPI
+* **Data:** JSON
+* **Analysis:** Rule-based infrastructure analysis
 
-Vite will print the local development URL in the terminal.
+## 🚀 Run Locally
 
-## Start the backend
+### Backend
 
-Create and activate a virtual environment from the project root:
-
-```powershell
+```bash
 cd backend
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
@@ -39,8 +47,50 @@ python -m pip install -r requirements.txt
 uvicorn main:app --reload
 ```
 
-The API is then available at `http://127.0.0.1:8000`. The health check is available at `http://127.0.0.1:8000/api/health`.
+Backend runs at `http://127.0.0.1:8000`
 
-## Future work
+### Frontend
+
+Open another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Frontend runs at `http://127.0.0.1:5173`
+
+## 📊 Prototype
+
+The included dataset contains **12 representative cloud resources** across EC2, RDS, EBS and S3.
+
+Current analysis identifies:
+
+* **8 resources requiring review**
+* **2 optimization candidates**
+* **4 healthy resources**
+* **$234.17/month estimated potential savings**
+* **53.67 kg/month prototype carbon impact**
+
+These values are based on the included representative dataset.
+
+## ☁️ AWS Context
+
+EcoCloud Sentinel models AWS infrastructure and is designed to help identify cloud waste and optimization opportunities.
+
+The current hackathon prototype runs locally using representative infrastructure data rather than connecting to live AWS resources.
+
+The carbon-impact calculation is a **prototype estimate**, not an official AWS emissions measurement.
+
+## 🔐 Safety
+
+EcoCloud Sentinel provides recommendations but does not automatically modify or delete cloud resources.
+
+## 📌 Status
+
+**Functional hackathon prototype**
+
+Built for **AWS Bharat Builds**.
 
 AWS integration will be added later. This setup does not connect to AWS or include credentials, authentication, a database, Docker, AWS SDKs, or Amazon Bedrock.
