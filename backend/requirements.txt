@@ -1,2 +1,3 @@
 fastapi
 uvicorn[standard]
+cedarpy==4.12.0

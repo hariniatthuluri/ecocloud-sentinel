@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from analysis import analyze_resources, analyze_resource, find_waste, load_resources, summarize_resources
+from cedar_policy import evaluate_recommendations
 
 app = FastAPI(title="EcoCloud Sentinel API")
 
@@ -48,13 +49,13 @@ def summary():
 @app.get("/api/findings")
 def findings():
     analyzed_resources = analyze_resources()
-    return {"findings": find_waste(analyzed_resources)}
+    return {"findings": evaluate_recommendations(find_waste(analyzed_resources))}
 
 
 @app.get("/api/recommendations")
 def recommendations():
     analyzed_resources = analyze_resources()
-    return {"recommendations": find_waste(analyzed_resources)}
+    return {"recommendations": evaluate_recommendations(find_waste(analyzed_resources))}
 
 
 @app.get("/api/findings/{resource_id}")
